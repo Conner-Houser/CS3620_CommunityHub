@@ -7,16 +7,17 @@ databases:
 services:
   - type: web
     plan: free
-    name: community_hub
+    name: community-hub
     runtime: python
     buildCommand: './build.sh'
     startCommand: 'python -m gunicorn community_hub.asgi:application -k uvicorn.workers.UvicornWorker'
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: communityhubdb
+          name: mysitedb
           property: connectionString
       - key: SECRET_KEY
         generateValue: true
       - key: WEB_CONCURRENCY
         value: 4
+
