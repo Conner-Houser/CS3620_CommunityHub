@@ -1,0 +1,40 @@
+{% load static %}
+<script src="https://cdn.tailwindcss.com"></script>
+
+<div class="max-w-2xl mx-auto my-10 bg-white shadow-lg rounded-lg overflow-hidden">
+
+    <div class="bg-sky-950 text-white p-6 rounded-t-lg w-full">
+        <h1 class="text-3xl font-bold mb-4 text-center">Create New Event</h1>
+
+        <p class="text-white text-center mb-6">
+            Fill out the information below to add a new event to the Community Hub.
+        </p>
+    </div>
+
+
+<form method="POST" class="form p-6">
+    {% csrf_token %}
+
+
+    <div class="mb-4">
+        {{ form.as_p }}
+    </div>
+
+    <button 
+        type="submit" 
+        class="w-full bg-sky-950 hover:bg-sky-300 hover:text-black text-white font-semibold py-2 px-4 rounded-lg transition"
+    >
+        Save Event
+    </button>
+</form>
+
+<div class="text-center pb-4">
+    <a 
+    href="{% url 'event_list' %}" 
+    class="text-gray-600 hover:text-gray-900 underline"
+    >
+    Cancel
+    </a>
+</div>
+
+</div>

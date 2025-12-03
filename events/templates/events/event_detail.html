@@ -1,0 +1,17 @@
+{% load static %}
+<script src="https://cdn.tailwindcss.com"></script>
+
+<div class="block m-6 mx-auto border rounded-lg shadow hover:shadow-lg hover:bg-gray-50 transition cursor-pointer max-w-lg mx-4">
+    <h1 class="bg-sky-950 text-white p-6 rounded-t-lg w-full text-5xl font-bold text-center py-6">{{ event.title }}</h1>
+
+    <div class="p-6">
+        <p><strong>Date:</strong> {{ event.date_time }} </p>
+        <p><strong>Location:</strong> {{ event.location }} </p>
+        <p><strong>Description:</strong> {{ event.description }} </p>
+    </div>
+    
+
+    <a href="{% url 'event_list' %}" class="m-6 text-center block mx-4 bg-sky-950 text-white text-lg font-semibold p-2 rounded-3xl hover:bg-sky-200 hover:text-black">Back to events</a>
+</div>
+
+

@@ -1,0 +1,63 @@
+{% load static %}
+<script src="https://cdn.tailwindcss.com"></script>
+
+<h1 class="text-3xl font-bold text-center text-white bg-sky-950 py-4">
+    Community Nexus
+</h1>
+
+<p class="text-gray-700 text-lg mx-auto text-center p-4 container">    
+    Welcome to Community Nexus, your go-to platform for discovering local events and connecting with people in your area. Whether you're looking for concerts, workshops, meetups, or family-friendly activities, Community Hub makes it easy to stay informed and join in on the fun. 
+    Never miss out on exciting opportunities happening in your community. Start exploring today and become part of a vibrant, connected local network!
+</p>
+
+<div class="text-center my-4">
+    <a href="{% url 'event_create' %}">
+        <button class="bg-sky-950 text-white text-lg font-semibold py-2 px-4 rounded-3xl hover:bg-sky-200 hover:text-black">
+            Post New Event
+        </button>
+    </a>
+</div>
+
+<ul class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-4">
+    {% for event in events %}
+    <a href="{% url 'event_detail' event.pk %}" class="block no-underline">
+        <li class="border rounded-lg shadow hover:shadow-lg hover:bg-gray-50 transition cursor-pointer">
+            <h2 class="text-lg text-sky-950 font-bold mb-1 bg-sky-100 w-full px-2 py-1 rounded-t">
+                {{ event.title }}
+            </h2>
+            <div class="p-4">
+                <p><strong>Location:</strong> {{ event.location }}</p>
+                <p><strong>Date:</strong> {{ event.date_time }}</p>
+            </div>
+            
+        </li>
+    </a>
+    {% empty %}
+        <li class="text-center text-gray-500">No events available.</li>
+    {% endfor %}
+</ul>
+
+
+{% comment %} <ul class="max-w-lg mx-auto space-y-2">
+    {% for event in events %}
+    <a href="{% url 'event_detail' event.pk %}" class="block no-underline">
+        <li class="border p-2 rounded hover:bg-gray-100 cursor-pointer">
+            <h2 class="text-xl font-bold text-gray-800">{{ event.title }}</h2><br>
+            <p>
+                <strong>Location:</strong> {{ event.location }}
+            </p>
+            <p>
+                <strong>Date:</strong> {{ event.date_time }}
+            </p>
+        </li>
+    </a>
+    {% empty %}
+        <li class="text-center text-gray-500">No events available.</li>
+    {% endfor %}
+</ul> {% endcomment %}
+
+
+
+
+
+
