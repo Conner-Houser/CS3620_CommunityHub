@@ -1,20 +1,20 @@
 databases:
-  - name: mysitedb
+  - name: communityhubdb
     plan: free
-    databaseName: mysite
-    user: mysite
+    databaseName: communityhub
+    user: communityhub
 
 services:
   - type: web
     plan: free
-    name: mysite
+    name: community_hub
     runtime: python
     buildCommand: './build.sh'
-    startCommand: 'python -m gunicorn mysite.asgi:application -k uvicorn.workers.UvicornWorker'
+    startCommand: 'python -m gunicorn community_hub.asgi:application -k uvicorn.workers.UvicornWorker'
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: mysitedb
+          name: communityhubdb
           property: connectionString
       - key: SECRET_KEY
         generateValue: true
